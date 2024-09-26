@@ -4,14 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= message.text %></title>
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <div class="messageCard" style="border: 1px solid black; padding: 1rem">
-      <p><%= message.text %></p>
-      <p>Sender : <%=message.user %></p>
-      <p>At : <%=message.date%></p>
-    </div>
-    <a href="/message/<%= currentId + 1 %>">Next</a>
-    <a href="/">Go back home</a>
+    <%- include('header') %>
+    <main>
+      <div class="message">
+        <div class="info">
+          <p>From : <b><%=message.user %></b></p>
+          <p>Added : <b><%=message.date%></b></p>
+        </div>
+        <p class="text"><%= message.text %></p>
+        <div class="wrapper">
+          <a href="/message/<%= currentId === 0 ? currentId : currentId - 1 %>"
+            ><button>Prev Message</button></a
+          >
+          <a
+            href="/message/<%= currentId === maxId - 1 ? currentId : currentId + 1 %>"
+            ><button>Next Message</button></a
+          >
+        </div>
+      </div>
+    </main>
   </body>
 </html>

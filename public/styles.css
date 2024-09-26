@@ -1,0 +1,157 @@
+:root {
+  --page-width: 800px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  background-color: rgb(28, 39, 43);
+  color: white;
+  padding-bottom: 2rem;
+}
+
+header {
+  background-color: #2b5c5e;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid;
+
+  a:any-link {
+    text-decoration: none;
+    color: white;
+  }
+}
+button {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+}
+
+main {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 2rem;
+}
+
+/* Homepage */
+.messageCard {
+  display: flex;
+  gap: 3rem;
+
+  .sender {
+    max-width: 50px;
+    text-align: center;
+    img {
+      background-color: white;
+      padding: 0.2rem;
+      border-radius: 10px;
+    }
+
+    .user {
+      font-size: 0.8rem;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .textCard {
+    width: 700px;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+
+    color: white;
+    background-color: rgb(1, 40, 46);
+    border: 2px solid white;
+    padding: 1rem;
+    padding-bottom: 0.5rem;
+
+    p {
+      line-height: 1.5;
+    }
+
+    .details {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      gap: 1rem;
+
+      button {
+        padding: 0.2rem;
+      }
+    }
+  }
+}
+
+/* FORM */
+form {
+  border: 1px solid white;
+  padding: 2rem;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+
+  h2 {
+    text-align: center;
+    border-bottom: 1px solid grey;
+    padding-bottom: 1rem;
+  }
+
+  input,
+  textarea {
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    background-color: rgb(38, 49, 53);
+    color: white;
+
+    border: 1px solid grey;
+    border-radius: 5px;
+  }
+
+  .wrapper {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+/* MESSAGE */
+.message {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 2rem;
+
+  border: 2px solid grey;
+  padding: 1rem;
+
+  .text {
+    min-height: 20rem;
+    border: 1px solid grey;
+    padding: 1rem;
+    line-height: 1.5;
+  }
+}

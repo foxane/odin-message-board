@@ -4,24 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%=title%></title>
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <h1><%=title%></h1>
-    <a href="/new">
-      <button>New message</button>
-    </a>
-    <ul>
+    <%- include('header') %>
+    <main>
       <% messages.forEach(item => { %>
-      <li>
-        <p>
-          <%= item.text %><a
-            href="/message/<%= item.id %>"
-            style="padding-left: 1rem"
-            >Details</a
-          >
-        </p>
-      </li>
+      <div class="messageCard">
+        <div class="sender">
+          <img src="./user.svg" alt="user image" width="50" />
+          <p class="user"><%= item.user %></p>
+        </div>
+        <div class="textCard">
+          <p><%= item.text %></p>
+          <div class="details">
+            <p class="date"><%= item.date %></p>
+            <a href="/message/<%=item.id%>"><button>Details</button></a>
+          </div>
+        </div>
+      </div>
       <% }); %>
-    </ul>
+    </main>
   </body>
 </html>

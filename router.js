@@ -28,7 +28,11 @@ messageRouter.get('/', (req, res) => {
 messageRouter.get('/:id', (req, res) => {
   const message = Message.getMessage(Number(req.params.id));
   if (message) {
-    res.render('message', { message: message, currentId: message.id });
+    res.render('message', {
+      message: message,
+      currentId: message.id,
+      maxId: Message.idCounter,
+    });
   } else {
     res.render('404', { error: 'Message not found!' });
   }
