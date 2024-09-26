@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= message.text %></title>
+  </head>
+  <body>
+    <div class="messageCard" style="border: 1px solid black; padding: 1rem">
+      <p><%= message.text %></p>
+      <p>Sender : <%=message.user %></p>
+      <p>At : <%=message.date%></p>
+    </div>
+    <a href="/message/<%= currentId + 1 %>">Next</a>
+    <a href="/">Go back home</a>
+  </body>
+</html>

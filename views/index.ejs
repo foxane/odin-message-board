@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=title%></title>
+  </head>
+  <body>
+    <h1><%=title%></h1>
+    <a href="/new">
+      <button>New message</button>
+    </a>
+    <ul>
+      <% messages.forEach(item => { %>
+      <li>
+        <p>
+          <%= item.text %><a
+            href="/message/<%= item.id %>"
+            style="padding-left: 1rem"
+            >Details</a
+          >
+        </p>
+      </li>
+      <% }); %>
+    </ul>
+  </body>
+</html>
