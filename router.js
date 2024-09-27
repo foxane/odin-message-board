@@ -4,6 +4,7 @@ const indexRouter = Router();
 const formRouter = Router();
 const messageRouter = Router();
 
+// Index controller
 indexRouter.get('/', (req, res) => {
   res.render('index', {
     title: 'Mini Message Board',
