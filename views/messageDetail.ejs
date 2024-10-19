@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head', {title: `Message Detail`}) %>
+</head>
+<body>
+  <header>
+    <%- include('./partials/header', {title: `Message from ${message.username}`}) %>
+  </header>
+  
+  <%- include('./partials/message', {item: message}) %>
+
+  <%- include('./partials/footer') %>
+</body>
+</html>

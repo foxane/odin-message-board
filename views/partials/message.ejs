@@ -1,0 +1,30 @@
+<!-- Split multiple lines of message -->
+<% const messageLines = item.message.split('\n') %>
+
+<div class="container-sm border border-secondary border-2 mt-2">
+  <div class="row text-bg-secondary d-flex align-items-center ps-1 pc-2 py-1">
+    <b class="col"><%= item.username %></b>
+    <span class="col-auto small monospace">
+      No. <%= item.id %>
+      <% if (item.reply_to) { %>
+        <i>replied to</i>
+        <a href="/message/detail/<%= item.reply_to %>" class="text-light">
+          No. <%= item.reply_to %>
+        </a>
+      <% } %>
+    </span>
+  </div>
+  <div class=" container">
+    <div class="pt-2">
+      <% messageLines.forEach(message => { %>
+        <p><%= message %></p>
+      <%}) %>
+    </div>
+    <div class="d-flex align-items-center ps-2 pb-2">
+      <span class="col-auto small fst-italic"><%= item.send_date %></span>
+      <a href="/message/new?reply=<%= item.id %>" class="ms-auto">
+        Reply
+      </a>
+    </div>
+  </div>
+</div>

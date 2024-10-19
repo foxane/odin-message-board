@@ -1,29 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%=title%></title>
-    <link rel="stylesheet" href="/styles.css" />
+    <%- include('./partials/head', {title: 'Message Board'}) %>
   </head>
   <body>
-    <%- include('header') %>
-    <main>
-      <% messages.forEach(item => { %>
-      <div class="messageCard">
-        <div class="sender">
-          <img src="./user.svg" alt="user image" width="50" />
-          <p class="user"><%= item.user %></p>
-        </div>
-        <div class="textCard">
-          <p><%= item.text %></p>
-          <div class="details">
-            <p class="date"><%= item.date %></p>
-            <a href="/message/<%=item.id%>"><button>Details</button></a>
-          </div>
-        </div>
-      </div>
-      <% }); %>
-    </main>
+    <header>
+      <%- include('./partials/header') %>
+    </header>
+
+    <% messages.forEach(item => { %>
+      <%- include('./partials/message', {item: item}) %>
+    <% }) %>
+
+    <%- include('./partials/pagination', {currentPage, pageCount}) %>
+    <%- include('./partials/footer') %>
   </body>
 </html>

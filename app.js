@@ -1,23 +1,24 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('node:path');
-const { indexRouter, formRouter, messageRouter } = require('./router');
+const indexRouter = require('./routes/indexRouter');
+const messageRouter = require('./routes/messageRouter');
 const app = express();
-const port = process.env.PORT || 3000;
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: true })); // Parse req.body
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views')); // Template dir
+app.set('view engine', 'ejs'); // Template engine
 
-app.use('/', indexRouter);
-app.use('/new', formRouter);
 app.use('/messages?', messageRouter);
+app.use('/', indexRouter);
+app.all('*', indexRouter);
 
-app.get('*', (req, res) => {
-  res.render('404', { error: 'Page not found' });
+app.use((err, req, res, next) => {
+  console.log('Uncaught error: ', err.msg);
+  res.status(400).render('error', { error: err.msg });
 });
 
-app.listen(port, () => {
-  console.log(`App is listening on port ${port}`);
+app.listen(process.env.PORT, () => {
+  console.log('Server started at port: ', process.env.PORT);
 });

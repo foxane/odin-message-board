@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head', {title: 'Message Board'}) %>
+  </head>
+  <body>
+    <header>
+      <%- include('./partials/header') %>
+    </header>
+
+    <form
+    class="container-sm p-2 m-auto border border-2 rounded"
+    action="/message/new"
+    method="post">
+
+      <!-- Error list on failed validation -->
+      <% if (typeof errorArray !== 'undefined') { %>
+        <ul>
+          <% errorArray.map((err) => { %>
+            <li><%= err.msg %></li>
+          <% }) %>
+        </ul>
+      <% } %>
+    
+      <!-- Optional reply : Using isReply directly don't work on ejs if isReply is not provided -->
+      <% if (typeof isReply !== 'undefined' && isReply) { %> 
+        <p>Replying to <a href="/message/detail/<%=messageId%>"><%=messageId%></a></p>
+        <input type="hidden" value="<%=messageId%>" name="reply_to">
+      <% } %>
+
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="username">Username</label>
+        <input
+          required
+          maxlength="20"
+          type="text"
+          id="username"
+          name="username"
+          class="form-control" />
+      </div>
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="message">Message</label>
+        <textarea
+          required
+          class="form-control"
+          id="message"
+          name="message"
+          rows="5"
+          minlength="5"
+          maxlength="500"></textarea>
+      </div>
+      <button
+        style="display: block"
+        type="submit"
+        class="btn btn-primary btn-block mb-4 m-auto">
+        Send
+      </button>
+    </form>
+
+    <%- include('./partials/footer') %>
+  </body>
+</html>
